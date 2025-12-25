@@ -1,4 +1,4 @@
-#AWS Serverless User Portal
+# AWS Serverless User Portal
 
 This project is a fully serverless web application developed using core AWS cloud services and DevOps best practices.
 
