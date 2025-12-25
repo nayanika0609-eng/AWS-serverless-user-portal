@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Serverless User Portal</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #6a11cb;
+            outline: none;
+            box-shadow: 0 0 6px rgba(106,17,203,0.2);
+        }
+
+        button {
+            width: 94%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .success {
+            color: #0a8f34;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .error {
+            color: #d10000;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+    <h2>AWS Serverless User Portal</h2>
+    <p class="subtitle">Enter your details & save them securely using<br> Lambda + API Gateway + DynamoDB</p>
+
+    <input type="text" id="email" placeholder="📧 Enter your Email">
+    <input type="text" id="name" placeholder="👤 Enter your Name">
+    
+    <button onclick="submitData()">Submit</button>
+
+    <p id="response"></p>
+</div>
+
+<script>
+async function submitData() {
+    const email = document.getElementById("email").value;
+    const name  = document.getElementById("name").value;
+    const resultBox = document.getElementById("response");
+
+    if (!email || !name) {
+        resultBox.innerHTML = "❌ Please fill all fields";
+        resultBox.className = "error";
+        return;
+    }
+
+    resultBox.innerHTML = "⏳ Submitting...";
+    resultBox.className = "";
+
+    try {
+        const res = await fetch("YOUR_API_GATEWAY_URL", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, name })
+        });
+
+        const data = await res.json();
+
+        resultBox.innerHTML = "✅ " + data.message;
+        resultBox.className = "success";
+
+    } catch (err) {
+        resultBox.innerHTML = "❌ Error submitting data";
+        resultBox.className = "error";
+    }
+}
+</script>
+
+</body>
+</html>
