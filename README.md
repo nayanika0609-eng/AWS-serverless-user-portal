@@ -1,38 +1,42 @@
 # AWS Serverless User Portal
 
-This project is a fully serverless web application developed using core AWS cloud services and DevOps best practices.
+A fully serverless web application built using AWS cloud services and modern DevOps practices.
 
-Tech Stack
+## 🚀 Overview
+This project demonstrates how to design, deploy, and manage a scalable serverless web application on AWS. The application allows users to submit their name and email through a frontend interface, which is then processed and securely stored using backend cloud services.
 
-Amazon S3 – Static frontend hosting
+## 🛠️ Tech Stack
+- **Amazon S3** – Hosts the static frontend  
+- **Amazon API Gateway** – Exposes RESTful APIs  
+- **AWS Lambda** – Handles backend logic  
+- **Amazon DynamoDB** – Stores user data  
+- **GitHub Actions** – Enables CI/CD automation  
 
-Amazon API Gateway – RESTful API management
+## ✨ Features
+- Simple user form for submitting name and email  
+- Secure storage of user data in DynamoDB  
+- Fully serverless architecture with no server management  
+- Automated deployment using CI/CD pipeline  
+- Scalable and cost-effective cloud solution  
 
-AWS Lambda – Backend business logic
+## 🏗️ Architecture
+Frontend (Amazon S3)
+↓
+API Gateway
+↓
+AWS Lambda
+↓
+Amazon DynamoDB
 
-Amazon DynamoDB – NoSQL database for data storage
+## 🔁 CI/CD & DevOps
+- GitHub Actions is used to automate build and deployment  
+- Every commit triggers an automatic deployment  
+- Ensures faster development cycles and consistent updates  
 
-GitHub Actions – Continuous Integration and Continuous Deployment (CI/CD)
+## 📌 Deployment
+- Frontend is deployed on Amazon S3  
+- Backend services are integrated using API Gateway and Lambda  
+- Infrastructure follows serverless best practices  
 
-Key Features
-
-Users can submit their name and email through the frontend interface
-
-Submitted data is securely stored in DynamoDB
-
-Completely serverless architecture, eliminating server management
-
-Automated CI/CD pipeline to deploy updates on every GitHub commit
-
-System Architecture
-
-S3 (Frontend) → API Gateway → Lambda Function → DynamoDB
-
-DevOps Implementation
-
-GitHub Actions automates build and deployment processes
-
-Ensures fast, reliable, and consistent application updates
-
-Author
-Nayanika Prasad
+## 👤 Author
+**Nayanika Prasad**
